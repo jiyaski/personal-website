@@ -1,4 +1,25 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('../assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+
+
+html, body {
+    height: 100%; 
+}
+
+p {
+    @apply mt-2; 
+}
 
