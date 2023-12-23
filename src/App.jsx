@@ -16,14 +16,14 @@ function App() {
 
   return (
 
-    <div className='flex flex-col min-h-screen'>
-      <main className='flex flex-col flex-grow justify-center w-full bg-gray-100'>
+
+      <main className='flex flex-col min-h-screen flex-grow justify-center w-full bg-gray-100'>
         <div className='flex flex-col flex-grow items-center w-2/3 mx-auto bg-white'>
 
           <Navbar />
           
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/blog" element={<Blog />} />
@@ -36,7 +36,7 @@ function App() {
 
         </div>
       </main>
-    </div>
+
   )
 }
 
