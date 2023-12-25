@@ -17,8 +17,14 @@ function App() {
   return (
 
 
-      <main className='flex flex-col min-h-screen flex-grow justify-center w-full bg-gray-100'>
-        <div className='flex flex-col flex-grow items-center w-2/3 mx-auto bg-white'>
+      <main className='flex flex-col min-h-screen flex-grow justify-center w-full'
+          style={{ 
+            backgroundImage: "url('./src/assets/frutiger-aero.jpg')", 
+            backgroundSize: "cover", 
+            backgroundPosition: "center"
+            // image sourced from: https://wallpaperswide.com/dreamscape_spring_7-wallpapers.html
+          }}>
+        <div className='flex flex-col flex-grow items-center w-2/3 mx-auto bg-white opacity-97'>
 
           <Navbar />
           

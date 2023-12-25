@@ -8,6 +8,9 @@ export default {
         extend: {
             fontFamily: {
                 displayFont: ['PlayfairDisplay', 'serif']
+            }, 
+            opacity: {
+                '97': '0.97'
             }
         },
     },
