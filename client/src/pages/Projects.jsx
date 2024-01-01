@@ -1,4 +1,3 @@
-import MongoClient from './mongodb'; 
 
 
 function Projects() {
