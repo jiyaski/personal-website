@@ -7,7 +7,7 @@
 
 @font-face {
     font-family: 'PlayfairDisplay';
-    src: url('../assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf') format('ttf');
+    src: url('/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
   }

@@ -1,5 +1,5 @@
 
-import profilePhoto from '../assets/professional_portrait.jpg'
+import profilePhoto from '/images/professional_portrait.jpg'
 import { marked } from 'marked'
 
 

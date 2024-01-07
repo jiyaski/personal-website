@@ -2,7 +2,7 @@
 import './styles/App.css'
 
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Resume from './pages/Resume';
 import Projects from './pages/Projects';
@@ -16,10 +16,10 @@ function App() {
 
   return (
 
-
+    <BrowserRouter>
       <main className='flex flex-col min-h-screen flex-grow justify-center w-full'
           style={{ 
-            backgroundImage: "url('./src/assets/frutiger-aero.jpg')", 
+            backgroundImage: "url('/images/frutiger-aero.jpg')", 
             backgroundSize: "cover", 
             backgroundPosition: "center"
             // image sourced from: https://wallpaperswide.com/dreamscape_spring_7-wallpapers.html
@@ -42,6 +42,7 @@ function App() {
 
         </div>
       </main>
+    </BrowserRouter>
 
   )
 }
