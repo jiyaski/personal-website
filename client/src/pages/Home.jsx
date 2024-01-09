@@ -23,8 +23,8 @@ over time I found myself increasingly drawn to programming, so I eventually deci
 as a computer science major instead. 
 
 So here I am, a busy jacket. Student by day, student by night. Student on the weekends. I also 
-like hiking, gardening, drawing, and reading old books ~~, not that I actually do much of those 
-things~~. One day I will have hobbies! But for now, programming and math are my life, and I'm 
+like hiking, gardening, drawing, and reading old books ~~, not that I actually do much of those~~. 
+One day I will have time for hobbies! But for now, programming and math are my life, and I'm 
 quite okay with that.
   `
 

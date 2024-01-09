@@ -24,7 +24,7 @@ function App() {
             backgroundPosition: "center"
             // image sourced from: https://wallpaperswide.com/dreamscape_spring_7-wallpapers.html
           }}>
-        <div className='flex flex-col flex-grow items-center w-2/3 mx-auto bg-white opacity-97'>
+        <div className='flex flex-col flex-grow items-center w-2/3 mx-auto bg-white bg-opacity-97'>
 
           <Navbar />
           

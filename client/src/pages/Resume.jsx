@@ -6,14 +6,12 @@ function Resume() {
   return (
 
     <div className='flex flex-col w-3/4 py-4 h-[88vh]'> 
-      <iframe src={resume_pdf}
+      <iframe src={resume_pdf} 
           className='w-full h-full' 
           title="Resume">
       </iframe>
     </div>
   )
 }
-
-
 
 export default Resume
