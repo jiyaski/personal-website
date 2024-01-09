@@ -1,6 +1,10 @@
 
-import profilePhoto from '/images/professional_portrait.jpg'
-import { marked } from 'marked'
+import { marked } from 'marked'; 
+
+import MarkdownRenderer from '../components/MarkdownRenderer';
+import profilePhoto from '/images/professional_portrait.jpg'; 
+
+
 
 
 function Home() {
@@ -40,7 +44,9 @@ quite okay with that.
       <div className='my-4'></div>
 
       {/* main body text */} 
-      <div className='max-w-[800px] px-6' dangerouslySetInnerHTML={{__html: marked.parse(introText)}}></div>
+      <div className='max-w-[800px] px-6'>
+        <MarkdownRenderer jsonString={ introText } />     
+      </div>
 
       {/* profile photo */} 
       <img src={profilePhoto} width="200px" alt="professional photo of me"
