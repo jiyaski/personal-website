@@ -1,9 +1,24 @@
 require('dotenv').config();  // loads environment variables from `.env` file into `process.env` object 
 const express = require('express');
 const { MongoClient } = require('mongodb'); 
+const cors = require('cors'); 
 
 const app = express();
 const port = 3000;
+
+
+// setup ==================================================================
+
+const allowedOrigins = ['http://localhost:5173']; 
+const corsOptions = {
+    origin: function(origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) { 
+            callback(null, true);  // null -> no error;  true -> request should be allowed 
+        } else {
+            callback(new Error('Not allowed by CORS policy')); 
+        }
+    }
+}
 
 const mongoURI = process.env.MONGO_URI; 
 const dbName = 'personal-website'; 
@@ -22,6 +37,12 @@ connectToMongo();
 db = client.db(dbName); 
 
 
+// middleware ============================================================ 
+
+app.use(cors(corsOptions)); 
+
+
+// routes ================================================================ 
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
