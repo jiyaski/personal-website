@@ -1,17 +1,21 @@
 import { marked } from 'marked'; 
 
 
-function MarkdownRenderer({ jsonString }) {
+function MarkdownRenderer({ markdownString }) {
 
-  // JSON strings are always single-line - must restore original multiline string 
-  const markdownString = jsonString.replace(/\\n/g, '\n'); 
+  // strings in database are stored as a single line - must parse literal "\n"s to restore multiline string 
+  markdownString = markdownString.replace(/\\n/g, '\n'); 
+  // parse "- " into a tab and bullet character, but only if it follows a <br> 
+  // markdownString = markdownString.replace(/<br>- /, "\n\n\u2022 "); 
 
   // render the markdown 
   const htmlContent = marked(markdownString || ''); 
 
-  // this is the rendered markdown 
+  console.log(htmlContent); 
+
+  // this is the rendered markdown - `prose` class applies @tailwindcss/typography default styles 
   return (
-    <div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+    <div className='prose' dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
   ); 
 
 }

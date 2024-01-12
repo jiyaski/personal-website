@@ -3,9 +3,18 @@ export default {
     content: ['./index.html', './src/**/*.{html,js,jsx,ts,tsx}'],
     theme: {
         extend: {
-            opacity: { '97': '0.97' }
+            opacity: { '97': '0.97' }, 
+            typography: (theme) => ({
+                DEFAULT: {
+                  css: {
+                    maxWidth: 'none'
+                  },
+                },
+              }),
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography')
+    ],
 }
 

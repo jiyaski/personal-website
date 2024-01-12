@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'; 
 import { marked } from 'marked'; 
+import MarkdownRenderer from '../components/MarkdownRenderer';
 
 
 function Projects() {
@@ -30,9 +31,11 @@ function Projects() {
       <h1>Projects</h1>
 
         {projects.map(project => (
-          <div key={project._id}>
-            <h2>Title: { project.title }</h2>
-            <p>Description: { project.desc }</p>
+          <div key={project._id} className='w-full max-w-[800px] px-6'>
+            <h2 className='text-center'>Title: { project.title }</h2>
+            <div className='py-4'>
+              <MarkdownRenderer markdownString={ project.desc } />
+            </div>
           </div>
         ))}
     </>

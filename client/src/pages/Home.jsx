@@ -45,7 +45,7 @@ quite okay with that.
 
       {/* main body text */} 
       <div className='max-w-[800px] px-6'>
-        <MarkdownRenderer jsonString={ introText } />     
+        <MarkdownRenderer markdownString={ introText } />     
       </div>
 
       {/* profile photo */} 
