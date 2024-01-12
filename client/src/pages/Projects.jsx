@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'; 
 import { marked } from 'marked'; 
 import MarkdownRenderer from '../components/MarkdownRenderer';
+import Tags from '../components/Tags'; 
 
 
 function Projects() {
@@ -33,6 +34,7 @@ function Projects() {
         {projects.map(project => (
           <div key={project._id} className='w-full max-w-[800px] px-6'>
             <h2 className='text-center'>Title: { project.title }</h2>
+            <Tags names={project.tags} />
             <div className='py-4'>
               <MarkdownRenderer markdownString={ project.desc } />
             </div>
