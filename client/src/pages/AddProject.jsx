@@ -55,6 +55,8 @@ function AddProject() {
       } else {
         setIsSubmitted(true); 
         setTimeout(() => setIsSubmitted(false), 3000); 
+        const responseText = await response.text(); 
+        console.log(responseText); 
       }
     
     } catch (error) {
@@ -131,14 +133,14 @@ function AddProject() {
         />
         <br/>
         <label htmlFor='desc'>Enter description (markdown text): </label>
-        <textarea className='w-5/6 h-64 m-2 border-2 leading-normal'
+        <textarea className='w-full h-64 border-2 leading-normal'
           name='desc' id='desc'
           value={desc}
           onChange={(event) => setDesc(event.target.value)}
         />
         <br/>
         <label htmlFor='secretKey'>Secret key: </label>
-        <input type='text' className='m-2 border-2 border-blue-700'
+        <input type='password' className='m-2 border-2 border-blue-700'
           name='secretKey' id='secretKey' 
           value={secretKey} 
           onChange={(event) => setSecretKey(event.target.value)} 

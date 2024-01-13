@@ -9,8 +9,6 @@ function MarkdownRenderer({ markdownString }) {
   // render the markdown 
   const htmlContent = marked(markdownString || ''); 
 
-  console.log(htmlContent); 
-
   // this is the rendered markdown - `prose` class applies @tailwindcss/typography default styles 
   return (
     <div className='prose' dangerouslySetInnerHTML={{ __html: htmlContent }}></div>

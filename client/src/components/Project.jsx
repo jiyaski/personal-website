@@ -13,9 +13,9 @@ function Project({ projectJson }) {
 
   return (
     <>
-      <div onClick={ toggleDescVisible } className='hover:bg-slate-200 p-2'>
-        <div className='flex justify-between items-center py-2'>
-          <h2 className='text-3xl font-bold'>{ projectJson.title }</h2>
+      <div onClick={ toggleDescVisible } className='hover:bg-slate-200 px-2 py-4'>
+        <div className='flex justify-between items-center py-1'>
+          <h2 className='text-2xl font-bold'>{ projectJson.title }</h2>
           <span className='flex items-center'>
             <DateParser dateObject={projectJson.startDate} />&nbsp;-&nbsp;<DateParser dateObject={projectJson.endDate} />
           </span>

@@ -41,12 +41,9 @@ db = client.db(dbName);
 // middleware ============================================================ 
 
 
-// app.use(cors(corsOptions)); 
-app.use(cors()); 
+app.use(cors(corsOptions)); 
 
 app.use(express.json());
-
-
 
 
 // routes ================================================================ 
@@ -77,7 +74,17 @@ app.post('/add-project', async (req, res) => {
         return res.status(401).send("Unauthorized"); 
     }
 
-    res.send("Server has received the form data"); 
+    delete req.body.secretKey; 
+
+    try {
+        const collection = db.collection('projects'); 
+        const result = await collection.insertOne(req.body); 
+        res.status(201).send("Document successfully added to database"); 
+    } catch(error) {
+        console.error(`Error adding document to database: ${error}`); 
+        res.status(500).send("Error adding data to database"); 
+    }
+
 })
 
 

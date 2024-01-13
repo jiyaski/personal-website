@@ -8,13 +8,17 @@ function DateParser({ dateObject }) {
   let month = parseInt(dateObject.month); 
   let day = parseInt(dateObject.day); 
 
-  if (!isNaN(day)) {
+  if (!isNaN(day) && day !== 0) {
     // e.g. "Dec 31, 2012" 
     return <span>{ `${parseMonth(month)} ${dateObject.day}, ${dateObject.year}` }</span>
 
-  } else {
+  } else if (!isNaN(month) && month !== 0) {
     // e.g. "Dec 2012" 
     return <span>{ `${parseMonth(month)} ${dateObject.year}` }</span>
+  
+  } else { 
+    // e.g. "2012" 
+    return <span>{ `${dateObject.year}` }</span>
   }
 }
 export default DateParser; 
