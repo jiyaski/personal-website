@@ -1,7 +1,10 @@
 import { useState } from 'react'; 
 
+
+
 function AddProject() {
 
+  const [secretKey, setSecretKey] = useState(''); 
   const [title, setTitle] = useState(''); 
   const [tags, setTags] = useState(''); 
   const [desc, setDesc] = useState(''); 
@@ -14,12 +17,61 @@ function AddProject() {
   const [endMonth, setEndMonth] = useState(''); 
   const [endDay, setEndDay] = useState(''); 
 
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault(); 
+
+    const formData = {
+      "secretKey": secretKey.trim(), 
+      "title": title.trim(), 
+      "tags": tags.split(',').map(tag => tag.trim()), 
+      "startDate": {
+        "year": +startYear.trim(), 
+        "month": +startMonth.trim(), 
+        "day": +startDay.trim()
+      }, 
+      "endDate": {
+        "year": +endYear.trim(), 
+        "month": +endMonth.trim(), 
+        "day": +endDay.trim()
+      }, 
+      "desc": desc.replace(/\n/g, "\\n")
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/add-project', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(formData)
+      }); 
+
+      if (!response.ok) {
+        throw new Error(`HTTP error. Status: ${response.status}`); 
+      } else {
+        setIsSubmitted(true); 
+        setTimeout(() => setIsSubmitted(false), 3000); 
+      }
+    
+    } catch (error) {
+      console.log("AddProject: error sending data to server"); 
+    }
+  }
 
 
   return (
     <>
       <h1 className='pt-10 pb-2 text-xl font-bold'>Enter a project to the database: </h1>
-      <form className='py-6'>
+
+      {isSubmitted && 
+        <p className='w-full text-center text-xl m-4 bg-green-200 text-green-800'>Form submitted!</p>
+      }
+
+      <form onSubmit={handleSubmit} className='py-6'>
         <label htmlFor='title'>Project Title: </label>
         <input type='text' className='m-2 border-2'
           name='title' id='title'
@@ -84,6 +136,15 @@ function AddProject() {
           value={desc}
           onChange={(event) => setDesc(event.target.value)}
         />
+        <br/>
+        <label htmlFor='secretKey'>Secret key: </label>
+        <input type='text' className='m-2 border-2 border-blue-700'
+          name='secretKey' id='secretKey' 
+          value={secretKey} 
+          onChange={(event) => setSecretKey(event.target.value)} 
+        />
+        <br/>
+        <button type='submit' className='m-2 py-2 px-4 text-bold border-black border-2'>Submit</button>
 
       </form>
     </>

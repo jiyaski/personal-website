@@ -41,7 +41,12 @@ db = client.db(dbName);
 // middleware ============================================================ 
 
 
-app.use(cors(corsOptions)); 
+// app.use(cors(corsOptions)); 
+app.use(cors()); 
+
+app.use(express.json());
+
+
 
 
 // routes ================================================================ 
@@ -58,6 +63,7 @@ app.get('/projects', async (req, res) => {
         const documents = await collection.find({}).toArray(); 
         res.json(documents); 
     } catch (err) {
+        console.error(err); 
         res.status(500).send('Error fetching projects from database'); 
     }
 })
@@ -66,12 +72,12 @@ app.get('/projects', async (req, res) => {
 // admin endpoint that requires client to pass a secret key to access 
 app.post('/add-project', async (req, res) => {
 
-    const secretKey = process.env.secretKey; 
+    const secretKey = process.env.SECRET_KEY; 
     if (req.body.secretKey !== secretKey) {
         return res.status(401).send("Unauthorized"); 
     }
 
-    
+    res.send("Server has received the form data"); 
 })
 
 
