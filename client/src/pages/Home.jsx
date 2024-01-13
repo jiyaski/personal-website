@@ -18,9 +18,7 @@ I’m Jonathan, a computer science student at Georgia Tech and aspiring software
 I made this site partly to showcase my portfolio and partly on a whim. Maybe you can tell I got 
 nostalgic for 2010 when making this (the *Frutiger Aero* aesthetic sparks joy)! 
 
-<br>
-
-###### About me: 
+### About me: 
 I used to study physics at the University of North Georgia. I originally intended to transfer 
 to Georgia Tech to study electrical engineering (via a dual-degree transfer program). However, 
 over time I found myself increasingly drawn to programming, so I eventually decided to transfer 
@@ -39,7 +37,7 @@ quite okay with that.
       {/* Welcome text */} 
       <div className='my-6'></div>
       <div className='w-full text-center'>
-        <h1 className='mx-auto text-6xl font-displayFont'>Welcome!</h1>
+        <h1 className='mx-auto text-6xl font-displayFont font-bold py-8'>Welcome!</h1>
       </div>
       <div className='my-4'></div>
 

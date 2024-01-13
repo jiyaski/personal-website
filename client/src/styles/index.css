@@ -23,28 +23,3 @@ p {
     @apply mt-2; 
 }
 
-
-h1 {
-    @apply text-5xl pt-8 font-bold; 
-}
-
-h2 {
-    @apply text-4xl pt-6 font-bold; 
-}
-
-h3 {
-    @apply text-3xl pt-5 font-bold; 
-}
-
-h4 {
-    @apply text-2xl pt-4 font-bold; 
-}
-
-h5 {
-    @apply text-xl pt-3 font-bold; 
-}
-
-h6 {
-    @apply text-lg pt-2 font-semibold;
-
-}

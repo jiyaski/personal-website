@@ -30,17 +30,19 @@ function Projects() {
 
   return (
     <>
-      <h1>Projects</h1>
+      <h1 className='text-4xl font-bold pt-8 pb-6'>My Projects</h1>
 
         {projects.map(project => (
 
           <div key={project._id} className='w-full max-w-[800px] px-6'>
-            <h2>{ project.title }</h2>
-            <span>
-            <DateParser dateObject={project.startDate} />
-            &nbsp; - &nbsp; 
-            <DateParser dateObject={project.endDate} />
-            </span>
+
+            <div className='flex justify-between items-center py-2'>
+              <h2 className='text-3xl font-bold'>{ project.title }</h2>
+              <span className='flex items-center'>
+                <DateParser dateObject={project.startDate} />&nbsp;-&nbsp;<DateParser dateObject={project.endDate} />
+              </span>
+            </div>
+            
             <Tags names={project.tags} />
             <div className='py-4'>
               <MarkdownRenderer markdownString={ project.desc } />
