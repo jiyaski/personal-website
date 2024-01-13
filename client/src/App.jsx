@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Resume from './pages/Resume';
 import Projects from './pages/Projects';
 import Blog from './pages/Blog';
+import AddProject from './pages/AddProject'; 
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -33,6 +34,8 @@ function App() {
             <Route path="/resume" element={<Resume />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/blog" element={<Blog />} />
+            
+            <Route path='/add-project' element={<AddProject />} />
           </Routes>
           
           {/* spacing before footer */}

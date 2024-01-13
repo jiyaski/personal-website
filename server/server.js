@@ -9,6 +9,7 @@ const port = 3000;
 
 // setup ==================================================================
 
+
 const allowedOrigins = ['http://localhost:5173']; 
 const corsOptions = {
     origin: function(origin, callback) {
@@ -39,14 +40,17 @@ db = client.db(dbName);
 
 // middleware ============================================================ 
 
+
 app.use(cors(corsOptions)); 
 
 
 // routes ================================================================ 
 
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
 
 app.get('/projects', async (req, res) => {
     try {
@@ -57,6 +61,21 @@ app.get('/projects', async (req, res) => {
         res.status(500).send('Error fetching projects from database'); 
     }
 })
+
+
+// admin endpoint that requires client to pass a secret key to access 
+app.post('/add-project', async (req, res) => {
+
+    const secretKey = process.env.secretKey; 
+    if (req.body.secretKey !== secretKey) {
+        return res.status(401).send("Unauthorized"); 
+    }
+
+    
+})
+
+
+// start ================================================================
 
 
 app.listen(port, () => {
