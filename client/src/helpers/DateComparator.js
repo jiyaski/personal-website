@@ -13,6 +13,13 @@ export function compareStartEndDates(obj1, obj2) {
 }
 
 
+// assumes the inputs are Objects with a `date` property which contains 
+// `year`, `month`, and `day` properties 
+export function compareSingleDate(obj1, obj2) {
+    return compareDates(obj1.date, obj2.date); 
+}
+
+
 // assumes the inputs are Objects with `day`, `month`, and `year` properties 
 export function compareDates(obj1, obj2) {
 

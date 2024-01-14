@@ -7,7 +7,8 @@ export default {
             typography: (theme) => ({
                 DEFAULT: {
                   css: {
-                    maxWidth: 'none'
+                    maxWidth: 'none', 
+                    color: theme('colors.gray.900')
                   },
                 },
               }),
