@@ -22,7 +22,8 @@ function App() {
           style={{ 
             backgroundImage: "url('/images/frutiger-aero.jpg')", 
             backgroundSize: "cover", 
-            backgroundPosition: "center"
+            backgroundPosition: "center", 
+            backgroundAttachment: "fixed"
             // image sourced from: https://wallpaperswide.com/dreamscape_spring_7-wallpapers.html
           }}>
         <div className='flex flex-col flex-grow items-center w-2/3 mx-auto bg-white bg-opacity-97'>

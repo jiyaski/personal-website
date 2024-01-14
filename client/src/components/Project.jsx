@@ -7,13 +7,15 @@ function Project({ projectJson }) {
 
   const [isDescVisible, setIsDescVisible] = useState(false); 
 
+  const bgColorClass = isDescVisible ? 'bg-slate-200' : ''; 
+
   const toggleDescVisible = () => {
     setIsDescVisible( !isDescVisible ); 
   }
 
   return (
     <>
-      <div onClick={ toggleDescVisible } className='hover:bg-slate-200 px-2 py-4'>
+      <div onClick={ toggleDescVisible } className={`px-2 py-4 ${bgColorClass} hover:bg-slate-200`}>
         <div className='flex justify-between items-center py-1'>
           <h2 className='text-2xl font-bold'>{ projectJson.title }</h2>
           <span className='flex items-center'>

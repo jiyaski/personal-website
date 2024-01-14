@@ -16,9 +16,12 @@ function DateParser({ dateObject }) {
     // e.g. "Dec 2012" 
     return <span>{ `${parseMonth(month)} ${dateObject.year}` }</span>
   
-  } else { 
+  } else if (!isNaN(year) && year !== 0) { 
     // e.g. "2012" 
     return <span>{ `${dateObject.year}` }</span>
+
+  } else {
+    return <span>Present</span>  // if Y,M,D are all zero or NaN, then assume the date is "Present"
   }
 }
 export default DateParser; 

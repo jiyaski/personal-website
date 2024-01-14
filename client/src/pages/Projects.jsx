@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import Project from '../components/Project'; 
 import MarkdownRenderer from '../components/MarkdownRenderer';
+import { compareStartEndDates } from '../helpers/DateComparator'; 
 
 
 function Projects() {
@@ -60,14 +61,14 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
 
   return (
     <>
-      <h1 className='text-4xl font-bold pt-8 pb-6'>My Projects & Experience</h1>
+      <h1 className='text-4xl font-bold pt-8 pb-6 mx-2'>My Projects & Experience</h1>
       <div className='w-full max-w-[800px] px-6'>
 
         <div className='py-4'>
           <MarkdownRenderer markdownString={ introText } />
         </div>
 
-        {projects.map(project => (
+        {projects.sort(compareStartEndDates).reverse().map(project => (
           <Project key={ project._id} projectJson={project} />
         ))}
 
@@ -81,3 +82,4 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
 }
 
 export default Projects
+
