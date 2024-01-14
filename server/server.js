@@ -79,12 +79,31 @@ app.post('/add-project', async (req, res) => {
     try {
         const collection = db.collection('projects'); 
         const result = await collection.insertOne(req.body); 
-        res.status(201).send("Document successfully added to database"); 
+        res.status(201).send("Project successfully added to database"); 
     } catch(error) {
-        console.error(`Error adding document to database: ${error}`); 
-        res.status(500).send("Error adding data to database"); 
+        console.error(`Error adding project to database: ${error}`); 
+        res.status(500).send("Error adding project to database"); 
+    }
+})
+
+
+app.post('/add-blogpost', async (req, res) => {
+
+    const secretKey = process.env.SECRET_KEY; 
+    if (req.body.secretKey !== secretKey) {
+        return res.status(401).send("Unauthorized"); 
     }
 
+    delete req.body.secretKey; 
+
+    try {
+        const collection = db.collection('blog-posts'); 
+        const result = await collection.insertOne(req.body); 
+        res.status(201).send("Blog post successfully added to database"); 
+    } catch(error) {
+        console.error(`Error adding blog post to database: ${error}`); 
+        res.status(500).send("Error adding blog post to database"); 
+    }
 })
 
 

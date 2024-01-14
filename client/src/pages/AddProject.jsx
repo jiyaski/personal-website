@@ -38,7 +38,7 @@ function AddProject() {
         "month": +endMonth.trim(), 
         "day": +endDay.trim()
       }, 
-      "desc": desc.replace(/\n/g, "\\n")
+      "desc": desc.replace(/\n/g, "\\n").trim()
     }
 
     try {

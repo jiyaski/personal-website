@@ -7,7 +7,7 @@ import { compareStartEndDates } from '../helpers/DateComparator';
 function Projects() {
 
   const introText = `
-This page contains all of my programming experience in reverse-chronological order, 
+This page outlines all of my programming experience in reverse-chronological order, 
 going all the way back to my first \`hello world\`! 
 
 A list of computer science classes I've taken can be found at the bottom. Some 
