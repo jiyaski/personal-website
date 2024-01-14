@@ -66,6 +66,18 @@ app.get('/projects', async (req, res) => {
 })
 
 
+app.get('/blogpost', async (req, res) => {
+    try {
+        const collection = db.collection('blog-posts'); 
+        const blogPost = await collection.findOne({urlName: req.query.urlName}); 
+        res.json(blogPost); 
+    } catch(err) {
+        console.error(err); 
+        res.status(500).send('Error fetching blog post from database'); 
+    }
+})
+
+
 // admin endpoint that requires client to pass a secret key to access 
 app.post('/add-project', async (req, res) => {
 

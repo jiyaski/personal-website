@@ -60,24 +60,21 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
 
 
   return (
-    <>
-      <h1 className='text-4xl font-bold pt-8 pb-6 mx-2'>My Projects & Experience</h1>
-      <div className='w-full max-w-[800px] px-6'>
-
-        <div className='py-4'>
-          <MarkdownRenderer markdownString={ introText } />
-        </div>
-
-        {projects.sort(compareStartEndDates).reverse().map(project => (
-          <Project key={ project._id} projectJson={project} />
-        ))}
-
-        <div className='pt-16 pb-8 mx-2'>
-          <MarkdownRenderer markdownString={ courseworkText } />
-        </div>
-
+    <div className='w-full max-w-[800px] px-6'>
+      <h1 className='text-center text-4xl font-bold pt-8 pb-6 mx-2'>My Projects & Experience</h1>
+      <div className='py-4'>
+        <MarkdownRenderer markdownString={ introText } />
       </div>
-    </>
+
+      {projects.sort(compareStartEndDates).reverse().map(project => (
+        <Project key={ project._id} projectJson={project} />
+      ))}
+
+      <div className='pt-16 pb-8 mx-2'>
+        <MarkdownRenderer markdownString={ courseworkText } />
+      </div>
+
+    </div>
   )
 }
 

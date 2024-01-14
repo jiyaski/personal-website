@@ -4,6 +4,7 @@ function AddBlogPost() {
 
   const [secretKey, setSecretKey] = useState('');
   const [title, setTitle] = useState(''); 
+  const [urlName, setUrlName] = useState(''); 
   const [content, setContent] = useState('');
 
   const [year, setYear] = useState(''); 
@@ -20,6 +21,7 @@ function AddBlogPost() {
     const formData = {
       "secretKey": secretKey.trim(), 
       "title": title.trim(), 
+      "urlName": urlName.trim(), 
       "date": {
         "year": year.trim(), 
         "month": month.trim(), 
@@ -68,6 +70,13 @@ function AddBlogPost() {
           name='title' id='title'
           value={title}
           onChange={(event) => setTitle(event.target.value)}
+        />
+
+        <label htmlFor='urlName'>URL name: </label>
+        <input type='text' className='m-2 border-2' 
+          name='urlName' id='urlName' 
+          value={urlName} 
+          onChange={(event) => setUrlName(event.target.value)}
         />
 
         <p>Date (enter only numeric values): </p>
