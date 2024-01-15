@@ -12,10 +12,9 @@ function BlogPost() {
   const fetchBlogPost = async () => {
 
     const queryString = encodeURIComponent(urlName); 
-    console.log(queryString); 
 
     try {
-      const response = await fetch(`http://localhost:3000/blogpost?urlName=${encodeURIComponent(urlName)}`); 
+      const response = await fetch(`http://localhost:3000/blogpost?urlName=${queryString}`); 
       setBlogPost(await response.json()); 
     } catch(err) {
       console.error('Error fetching projects: ', err); 

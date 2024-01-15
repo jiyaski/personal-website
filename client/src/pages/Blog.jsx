@@ -38,7 +38,7 @@ A dumping ground for my thoughts.
       </div>
 
       {postSummaries.sort(compareSingleDate).reverse().map(postSummary => (
-        <BlogPostSummary key={ postSummary._id} summaryJson={postSummary} />
+        <BlogPostSummary key={postSummary.urlName} summaryJson={postSummary} />
       ))}
     </div>
   )

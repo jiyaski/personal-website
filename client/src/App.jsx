@@ -10,6 +10,7 @@ import Blog from './pages/Blog';
 import AddProject from './pages/AddProject'; 
 import AddBlogPost from './pages/AddBlogPost'; 
 import BlogPost from './pages/BlogPost'; 
+import ImageCredits from './pages/ImageCredits'; 
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -41,6 +42,7 @@ function App() {
             <Route path='/add-project' element={<AddProject />} />
             <Route path='/add-blogpost' element={<AddBlogPost />} />
             <Route path='/blog/:urlName' element={<BlogPost />} /> 
+            <Route path='/image-credits' element={<ImageCredits />} />
           </Routes>
           
           {/* spacing before footer */}
