@@ -29,13 +29,14 @@ function applyCors(req, res) {
 
     const allowedOrigins = [
         'https://jmhopkins.vercel.app',
-        'https://personal-website-client-eknb82lwg-jiyaskis-projects.vercel.app/', 
-        'https://personal-website-client-git-main-jiyaskis-projects.vercel.app/'
+        'https://personal-website-client-git-main-jiyaskis-projects.vercel.app'
     ];
 
+    // matches all my deployment link URLs 
+    const vercelDeploymentRegex = /^https:\/\/personal-website-client-\S+-jiyaskis-projects\.vercel\.app\/$/;
 
     const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || vercelDeploymentRegex.test(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
 
@@ -48,6 +49,27 @@ function applyCors(req, res) {
         return;
     }
 }
+
+
+function applyCors(req, res) {
+    const origin = req.headers.origin;
+
+
+
+    if (origin && vercelDeploymentRegex.test(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+
+    // Allow preflight requests for all routes
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+}
+
 
 
 
