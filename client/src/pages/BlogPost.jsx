@@ -7,6 +7,7 @@ function BlogPost() {
 
   const { urlName } = useParams(); 
   const [blogPost, setBlogPost] = useState(null); 
+  const apiUrl = import.meta.env.VITE_API_URL; 
 
 
   const fetchBlogPost = async () => {
@@ -14,7 +15,7 @@ function BlogPost() {
     const queryString = encodeURIComponent(urlName); 
 
     try {
-      const response = await fetch(`http://localhost:3000/blogpost?urlName=${queryString}`); 
+      const response = await fetch(`https://${apiUrl}/blogpost?urlName=${queryString}`); 
       setBlogPost(await response.json()); 
     } catch(err) {
       console.error('Error fetching projects: ', err); 

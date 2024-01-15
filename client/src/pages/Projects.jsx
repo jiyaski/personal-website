@@ -39,12 +39,13 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
   `
 
   const [projects, setProjects] = useState([]); 
+  const apiUrl = import.meta.env.VITE_API_URL; 
 
 
   // get JSON projects from server endpoint 
   async function fetchProjects() {
     try {
-      const response = await fetch('http://localhost:3000/projects'); 
+      const response = await fetch(`https://${apiUrl}/projects`); 
       const data = await response.json(); 
       setProjects(data); 
     } catch (err) {

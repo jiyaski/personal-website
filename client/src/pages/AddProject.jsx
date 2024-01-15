@@ -18,6 +18,7 @@ function AddProject() {
   const [endDay, setEndDay] = useState(''); 
 
   const [isSubmitted, setIsSubmitted] = useState(false); 
+  const apiUrl = import.meta.env.VITE_API_URL; 
 
 
   const handleSubmit = async (e) => {
@@ -42,7 +43,7 @@ function AddProject() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/add-project', {
+      const response = await fetch(`https://${apiUrl}/add-project`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json'

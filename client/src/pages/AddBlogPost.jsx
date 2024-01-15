@@ -12,6 +12,7 @@ function AddBlogPost() {
   const [day, setDay] = useState('');
 
   const [isSubmitted, setIsSubmitted] = useState('');
+  const apiUrl = import.meta.env.VITE_API_URL; 
 
 
   const handleSubmit = async (e) => {
@@ -31,7 +32,7 @@ function AddBlogPost() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/add-blogpost', {
+      const response = await fetch(`https://${apiUrl}/add-blogpost`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json'

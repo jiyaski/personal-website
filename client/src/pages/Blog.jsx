@@ -12,11 +12,12 @@ A dumping ground for my thoughts.
   `
 
   const [postSummaries, setPostSummaries] = useState([]); 
+  const apiUrl = import.meta.env.VITE_API_URL; 
 
 
   const fetchBlogPosts = async () => {
     try {
-      const response = await fetch('http://localhost:3000/blogposts'); 
+      const response = await fetch(`https://${apiUrl}/blogposts`); 
       const data = await response.json(); 
       setPostSummaries(data); 
     } catch(err) {
