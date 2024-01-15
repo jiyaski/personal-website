@@ -51,26 +51,4 @@ function applyCors(req, res) {
 }
 
 
-function applyCors(req, res) {
-    const origin = req.headers.origin;
-
-
-
-    if (origin && vercelDeploymentRegex.test(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-
-    // Allow preflight requests for all routes
-    if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
-    }
-}
-
-
-
-
 module.exports = { connectToMongo, applyCors }; 
