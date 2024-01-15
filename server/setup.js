@@ -27,10 +27,18 @@ async function connectToMongo() {
 
 function applyCors(req, res) {
 
-    const allowedOrigin = 'https://jmhopkins.vercel.app';
+    const allowedOrigins = [
+        'https://jmhopkins.vercel.app',
+        'https://personal-website-client-eknb82lwg-jiyaskis-projects.vercel.app/', 
+        'https://personal-website-client-git-main-jiyaskis-projects.vercel.app/'
+    ];
 
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', '*');
 
@@ -39,7 +47,8 @@ function applyCors(req, res) {
         res.status(200).end();
         return;
     }
-};
+}
+
 
 
 module.exports = { connectToMongo, applyCors }; 
