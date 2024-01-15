@@ -1,5 +1,5 @@
 
-import resume_pdf from '/assets/resume_default_2024-1-5.pdf' 
+import resume_pdf from '/assets/resume_default_2024-1-11.pdf' 
 
 function Resume() {
 

@@ -1,3 +1,11 @@
+
+
+// this code will no longer be used when deploying to Vercel. 
+// Vercel requires refactoring this file into multiple serverless functions - one for each API endpoint. 
+// These will all be in the `/api/` folder. Setup such as establishing the database connection and 
+// middleware will also be in a separate file. 
+
+
 require('dotenv').config();  // loads environment variables from `.env` file into `process.env` object 
 const express = require('express');
 const { MongoClient } = require('mongodb'); 
