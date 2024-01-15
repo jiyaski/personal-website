@@ -2,10 +2,11 @@
 
 const { connectToMongo, applyCors } = require('../setup'); // Adjust the path as necessary
 
-
 module.exports = async (req, res) => {
 
-    applyCors(req, res);
+    console.log('inside projects.js fn'); 
+
+    ({ req, res }) = applyCors(req, res);
 
     // Only proceed for GET requests
     if (req.method !== 'GET') {

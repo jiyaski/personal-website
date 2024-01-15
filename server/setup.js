@@ -24,31 +24,32 @@ async function connectToMongo() {
     return db;
 }
 
-
+// correct usage should be:  `({ req, res }) = applyCors(req, res);` 
 function applyCors(req, res) {
 
     const allowedOrigins = [
         'https://jmhopkins.vercel.app',
+        'http://localhost:5173',
         'https://personal-website-client-git-main-jiyaskis-projects.vercel.app'
     ];
 
     // matches all my deployment link URLs 
-    const vercelDeploymentRegex = /^https:\/\/personal-website-client-\S+-jiyaskis-projects\.vercel\.app\/$/;
+    const vercelDeploymentRegex = /^https:\/\/personal-website-client-\S+-jiyaskis-projects\.vercel\.app$/;
 
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin) || vercelDeploymentRegex.test(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', '*');
     }
 
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-
-    // Allow preflight requests for all routes
+    // Handle preflight requests for CORS
     if (req.method === 'OPTIONS') {
         res.status(200).end();
-        return;
+        return { req, res };
     }
-}
 
+    return { req, res }; 
+}
 
 module.exports = { connectToMongo, applyCors }; 
