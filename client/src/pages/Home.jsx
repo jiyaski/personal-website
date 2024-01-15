@@ -1,8 +1,11 @@
 
-import { marked } from 'marked'; 
+import { Link } from 'react-router-dom'; 
 
 import MarkdownRenderer from '../components/MarkdownRenderer';
+
 import profilePhoto from '/images/professional_portrait.jpg'; 
+import linkedinLogo from '/images/LinkedIn-logo.png'; 
+import githubLogo from '/images/GitHub-logo.svg'; 
 
 
 
@@ -39,9 +42,18 @@ quite okay with that.
       </div>
 
       {/* profile photo */} 
-      <img src={profilePhoto} width="200px" alt="professional photo of me"
+      <img src={profilePhoto} width="250px" alt="professional photo of me"
           className='mt-8 mb-4 item-center rounded-full border-2 border-gray-600'></img>
       
+      <div className='flex justify-between items-center'>
+        <Link to="https://www.linkedin.com/in/jonathan-miyagi-hopkins/">
+          <img src={linkedinLogo} alt="LinkedIn logo" width="50px"></img>
+        </Link>
+        <Link to="https://github.com/jiyaski">
+          <img src={githubLogo} alt="GitHub logo" width="50px"></img>
+        </Link>
+      </div>
+
       {/* spacing before footer */}
       <div className='flex-grow'></div>
     </>
