@@ -10,7 +10,7 @@ const allowedOrigins = [
 // matches all my deployment link URLs 
 const vercelDeploymentRegex = /^https:\/\/personal-website-client-\S+-jiyaskis-projects\.vercel\.app$/;
 
-const origin = "https://personal-website-client-3j1osq3yy-jiyaskis-projects.vercel.app";
+const origin = "https://personal-website-client-104i9lplp-jiyaskis-projects.vercel.app";
 if (vercelDeploymentRegex.test(origin)) {
     console.log("CORS allowed"); 
 } else {

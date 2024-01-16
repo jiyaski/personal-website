@@ -8,7 +8,7 @@ const { MongoClient } = require('mongodb');
 
 
 // Initialize the MongoDB client outside of the function for reuse
-const client = new MongoClient(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(process.env.MONGO_URI);
 let db;
 
 async function connectToMongo() {
@@ -43,7 +43,7 @@ function applyCors(req, res) {
     console.log(`origin: ${origin}`); 
 
     if (allowedOrigins.includes(origin) || vercelDeploymentRegex.test(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Origin', "*");  // change this back to `origin` when you can figure out the CORS error
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', '*');
         console.log('origin was in allowed origins'); 
