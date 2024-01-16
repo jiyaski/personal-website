@@ -25,6 +25,8 @@ async function connectToMongo() {
     return db;
 }
 
+
+
 function applyCors(req, res) {
 
     console.log('inside applyCors()'); 
@@ -38,12 +40,12 @@ function applyCors(req, res) {
     // matches all my deployment link URLs 
     const vercelDeploymentRegex = /^https:\/\/personal-website-client-\S+-jiyaskis-projects\.vercel\.app$/;
 
-    const origin = req.headers.origin;
+    const origin = req.headers['Origin'.toLowerCase()];
     
     console.log(`origin: ${origin}`); 
 
     if (allowedOrigins.includes(origin) || vercelDeploymentRegex.test(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', "*");  // change this back to `origin` when you can figure out the CORS error
+        res.setHeader('Access-Control-Allow-Origin', origin); 
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', '*');
         console.log('origin was in allowed origins'); 
