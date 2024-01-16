@@ -40,6 +40,8 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
 
   const [projects, setProjects] = useState([]); 
   const apiUrl = import.meta.env.VITE_API_URL; 
+  
+  console.log(`Projects.jsx - apiUrl: ${apiUrl}`); 
 
 
   // get JSON projects from server endpoint 
@@ -47,6 +49,9 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
     try {
       const response = await fetch(`${apiUrl}/projects`); 
       const data = await response.json(); 
+
+      console.log(data); 
+
       setProjects(data); 
     } catch (err) {
       console.error('Error fetching projects: ', err); 

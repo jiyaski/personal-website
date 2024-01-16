@@ -57,12 +57,12 @@ app.use(express.json());
 // routes ================================================================ 
 
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
   res.send('Hello World!');
 });
 
 
-app.get('/projects', async (req, res) => {
+app.get('/api/projects', async (req, res) => {
     try {
         const collection = db.collection('projects'); 
         const documents = await collection.find({}).toArray(); 
@@ -74,7 +74,7 @@ app.get('/projects', async (req, res) => {
 })
 
 
-app.get('/blogpost', async (req, res) => {
+app.get('/api/blogpost', async (req, res) => {
     try {
         const collection = db.collection('blog-posts'); 
         const blogPost = await collection.findOne({urlName: req.query.urlName}); 
@@ -86,7 +86,7 @@ app.get('/blogpost', async (req, res) => {
 })
 
 
-app.get('/blogposts', async (req, res) => {
+app.get('/api/blogposts', async (req, res) => {
     try {
         const collection = db.collection('blog-posts'); 
         const postSummaries = await collection.find({}, { projection: { _id: 0, content: 0 }}).toArray(); 
@@ -99,7 +99,7 @@ app.get('/blogposts', async (req, res) => {
 
 
 // admin endpoint that requires client to pass a secret key to access 
-app.post('/add-project', async (req, res) => {
+app.post('/api/add-project', async (req, res) => {
 
     const secretKey = process.env.SECRET_KEY; 
     if (req.body.secretKey !== secretKey) {
@@ -119,7 +119,7 @@ app.post('/add-project', async (req, res) => {
 })
 
 
-app.post('/add-blogpost', async (req, res) => {
+app.post('/api/add-blogpost', async (req, res) => {
 
     const secretKey = process.env.SECRET_KEY; 
     if (req.body.secretKey !== secretKey) {
