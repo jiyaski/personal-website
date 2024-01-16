@@ -32,7 +32,7 @@ function AddBlogPost() {
     }
 
     try {
-      const response = await fetch(`https://${apiUrl}/add-blogpost`, {
+      const response = await fetch(`${apiUrl}/add-blogpost`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json'

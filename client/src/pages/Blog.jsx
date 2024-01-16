@@ -17,7 +17,7 @@ A dumping ground for my thoughts.
 
   const fetchBlogPosts = async () => {
     try {
-      const response = await fetch(`https://${apiUrl}/blogposts`); 
+      const response = await fetch(`${apiUrl}/blogposts`); 
       const data = await response.json(); 
       setPostSummaries(data); 
     } catch(err) {

@@ -43,7 +43,7 @@ function AddProject() {
     }
 
     try {
-      const response = await fetch(`https://${apiUrl}/add-project`, {
+      const response = await fetch(`${apiUrl}/add-project`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json'

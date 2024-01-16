@@ -16,6 +16,7 @@ async function connectToMongo() {
         try {
             await client.connect();
             db = client.db('personal-website');
+            console.log('connected to database'); 
         } catch (err) {
             console.error(err);
             throw err;
@@ -24,32 +25,38 @@ async function connectToMongo() {
     return db;
 }
 
-// correct usage should be:  `({ req, res }) = applyCors(req, res);` 
 function applyCors(req, res) {
 
-    const allowedOrigins = [
-        'https://jmhopkins.vercel.app',
-        'http://localhost:5173',
-        'https://personal-website-client-git-main-jiyaskis-projects.vercel.app'
-    ];
+    console.log('inside applyCors()'); 
+
+    const prodOrigins = ['https://jmhopkins.vercel.app', 'https://personal-website-client-git-main-jiyaskis-projects.vercel.app']; 
+    const localOrigins = ['http://localhost:5173', 'https://localhost:5173']; 
+    const allowedOrigins = (process.env.NODE_ENV === 'local') ? localOrigins : prodOrigins; 
+
+    console.log(`allowed origins: ${allowedOrigins}`); 
 
     // matches all my deployment link URLs 
     const vercelDeploymentRegex = /^https:\/\/personal-website-client-\S+-jiyaskis-projects\.vercel\.app$/;
 
     const origin = req.headers.origin;
+    
+    console.log(`origin: ${origin}`); 
+
     if (allowedOrigins.includes(origin) || vercelDeploymentRegex.test(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', '*');
+        console.log('origin was in allowed origins'); 
     }
 
     // Handle preflight requests for CORS
     if (req.method === 'OPTIONS') {
         res.status(200).end();
-        return { req, res };
+        console.log('this was an OPTIONS request'); 
+        return;
     }
 
-    return { req, res }; 
+    return; 
 }
 
 module.exports = { connectToMongo, applyCors }; 

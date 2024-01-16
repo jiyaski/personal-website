@@ -15,7 +15,7 @@ function BlogPost() {
     const queryString = encodeURIComponent(urlName); 
 
     try {
-      const response = await fetch(`https://${apiUrl}/blogpost?urlName=${queryString}`); 
+      const response = await fetch(`${apiUrl}/blogpost?urlName=${queryString}`); 
       setBlogPost(await response.json()); 
     } catch(err) {
       console.error('Error fetching projects: ', err); 

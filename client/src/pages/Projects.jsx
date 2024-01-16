@@ -45,7 +45,7 @@ Note: the CS courses at UNG were generally of much lower quality than those at G
   // get JSON projects from server endpoint 
   async function fetchProjects() {
     try {
-      const response = await fetch(`https://${apiUrl}/projects`); 
+      const response = await fetch(`${apiUrl}/projects`); 
       const data = await response.json(); 
       setProjects(data); 
     } catch (err) {
