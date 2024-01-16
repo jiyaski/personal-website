@@ -26,7 +26,19 @@ async function connectToMongo() {
 }
 
 
+// no CORS policy for now bc it keeps being a pain 
+function applyCors(req, res) {
 
+    const origin = req.headers['Origin'.toLowerCase()]; 
+    res.setHeader('Access-Control-Allow-Origin', origin); 
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.status(200).end(); 
+    return; 
+}
+
+
+/*
 function applyCors(req, res) {
 
     console.log('inside applyCors()'); 
@@ -60,5 +72,6 @@ function applyCors(req, res) {
 
     return; 
 }
+*/
 
 module.exports = { connectToMongo, applyCors }; 
